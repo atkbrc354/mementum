@@ -159,6 +159,60 @@ slidePrev.addEventListener("click", getSlidePrev);
 
 setBg();
 
+const weatherIcon = document.querySelector(".weather-icon");
+const temperature = document.querySelector(".temperature");
+const weatherDescription = document.querySelector(".weather-description");
+const wind = document.querySelector(".wind");
+const humidity = document.querySelector(".humidity");
+const city = document.querySelector(".city");
+
+city.addEventListener('change', getWeather);
+
+
+async function getWeather() {
+  const inputCity = city.value;
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${inputCity}&lang=ru&appid=23375f98bc0f9927f7e5e7cb611cd650&units=metric`;
+  const res = await fetch(url);
+  const data = await res.json();
+
+  weatherIcon.classList.add(`owf-${data.weather[0].id}`);
+  temperature.textContent = `${data.main.temp}°C`;
+  weatherDescription.textContent = data.weather[0].description;
+  wind.textContent = `Скорость ветра : ${data.wind.speed} m/s`
+  humidity.textContent = `Влажность: ${data.main.humidity}%`
+}
+
+getWeather();
+
+const btnQuote = document.querySelector(".change-quote");
+const quote = document.querySelector(".quote");
+const author = document.querySelector(".author");
+
+async function getQuotes() {
+  const quotes = "./data.json";
+  const res = await fetch(quotes);
+  const data = await res.json();
+  console.log(data);
+  return data;
+}
+getQuotes();
+
+async function updateQuote() {
+  const data = await getQuotes();
+  const randomIndex = Math.floor(Math.random() * data.length);
+  const randomQuote = data[randomIndex];
+  
+  quote.textContent = randomQuote.text;
+  author.textContent = randomQuote.author;
+}
+
+getQuotes();
+
+btnQuote.addEventListener('click', updateQuote);
+
+window.addEventListener('load', updateQuote);
+
+
 
 
 
