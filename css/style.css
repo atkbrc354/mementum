@@ -31,6 +31,10 @@ body {
   padding: 20px;
 }
 
+.player {
+  margin-left: 50px;
+}
+
 .player-controls {
   display: flex;
   align-items: center;
@@ -272,6 +276,7 @@ body {
 li {
   list-style: none;
   position: relative;
+  z-index: 2;
   padding: 5px;
   padding-left: 20px;
   list-style: none;

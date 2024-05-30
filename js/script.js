@@ -241,6 +241,9 @@ document.addEventListener("DOMContentLoaded", function() {
       { name: 'Река Течет В Тебе', src: './assets/sounds/Ennio Morricone.mp3' },
       { name: 'Летний ветер', src: './assets/sounds/River Flows In You.mp3' },
       { name: 'Эннио Морриконе', src: './assets/sounds/Summer Wind.mp3' },
+      { name: 'Задержка', src: './assets/sounds/c152-hold-up.mp3' },
+      { name: 'Эннио', src: './assets/sounds/deathkllr84-forever-mine.mp3' },
+      { name: 'Морриконе', src: './assets/sounds/matcukito-kioto-c152-it-was-the-longest-night-of-my-life.mp3' },
   ];
 
   let currentTrackIndex = 0;
