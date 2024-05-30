@@ -286,6 +286,59 @@ li {
   list-style: none;
 }
 
+.track-info {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  font-size: 14px;
+  padding-left: 20px;
+}
+
+.volume-controls {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding-left: 25px;
+  padding-top: 5px;
+  z-index: 2;
+}
+
+.volume-slider {
+  width: 80px;
+  margin-left: -5px;
+  list-style: none;
+}
+
+.progress-container {
+  height: 5px;
+  background-color: #ddd;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: #007bff;
+  width: 0;
+  transition: width 0.2s ease;
+  
+}
+
+.play-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.play-list li {
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+
+.play-list li:hover {
+  font-weight: bold;
+}
+
 
 
 @media (max-width: 768px) {

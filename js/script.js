@@ -229,15 +229,24 @@ document.addEventListener("DOMContentLoaded", function() {
   const playPrevBtn = document.querySelector('.play-prev');
   const playNextBtn = document.querySelector('.play-next');
   const playList = document.querySelector('.play-list');
+  const progressBar = document.querySelector('.progress-bar');
+  const volumeBtn = document.querySelector('.volume');
+  const volumeSlider = document.querySelector('.volume-slider');
+  const trackName = document.querySelector('.track-name');
+  const currentTimeDisplay = document.querySelector('.current-time');
+  const durationDisplay = document.querySelector('.duration');
+
   const tracks = [
-      { name: 'Aqua Caelestis', src: './assets/sounds/Aqua Caelestis.mp3' },
-      { name: 'River Flows In You', src: './assets/sounds/Ennio Morricone.mp3' },
-      { name: 'Summer Wind', src: './assets/sounds/River Flows In You.mp3' },
-      { name: 'Ennio Morricone', src: './assets/sounds/Summer Wind.mp3' },
+      { name: 'Аква Целестис', src: './assets/sounds/Aqua Caelestis.mp3' },
+      { name: 'Река Течет В Тебе', src: './assets/sounds/Ennio Morricone.mp3' },
+      { name: 'Летний ветер', src: './assets/sounds/River Flows In You.mp3' },
+      { name: 'Эннио Морриконе', src: './assets/sounds/Summer Wind.mp3' },
   ];
+
   let currentTrackIndex = 0;
   let audio = new Audio(tracks[currentTrackIndex].src);
-  
+
+
   playPauseBtn.addEventListener('click', function() {
       if (audio.paused) {
           playTrack();
@@ -251,10 +260,22 @@ document.addEventListener("DOMContentLoaded", function() {
       playTrack();
   });
 
+
   playNextBtn.addEventListener('click', function() {
       currentTrackIndex = (currentTrackIndex + 1) % tracks.length;
       playTrack();
   });
+
+
+  function updatePlayList() {
+      const trackItems = playList.querySelectorAll('li');
+      trackItems.forEach((item) => {
+          item.classList.remove('current-track');
+      });
+      trackItems[currentTrackIndex].classList.add('current-track');
+      trackName.textContent = tracks[currentTrackIndex].name;
+  }
+
 
   function playTrack() {
       audio.src = tracks[currentTrackIndex].src;
@@ -264,26 +285,53 @@ document.addEventListener("DOMContentLoaded", function() {
       updatePlayList();
   }
 
+
   function pauseTrack() {
       audio.pause();
       playPauseBtn.classList.remove('pause');
       playPauseBtn.classList.add('play-icon');
   }
 
-  function updatePlayList() {
-      const trackItems = playList.querySelectorAll('li');
-      trackItems.forEach((item) => {
-          item.classList.remove('current-track');
-      });
-      trackItems[currentTrackIndex].classList.add('current-track');
+  function updateProgress() {
+      const progress = (audio.currentTime / audio.duration) * 100;
+      progressBar.style.width = `${progress}%`;
+      currentTimeDisplay.textContent = formatTime(audio.currentTime);
+      durationDisplay.textContent = formatTime(audio.duration);
   }
+
+  function formatTime(time) {
+      const minutes = Math.floor(time / 60);
+      const seconds = Math.floor(time % 60);
+      return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+  }
+
+  audio.addEventListener('timeupdate', updateProgress);
+
+  progressBar.addEventListener('click', function(event) {
+      const clickX = event.offsetX;
+      const progressBarWidth = progressBar.clientWidth;
+      const progress = (clickX / progressBarWidth) * audio.duration;
+      audio.currentTime = progress;
+  });
+
+
+  volumeBtn.addEventListener('click', function() {
+      audio.muted = !audio.muted;
+      volumeBtn.classList.toggle('mute', audio.muted);
+  });
+
+
+  volumeSlider.addEventListener('input', function() {
+      audio.volume = volumeSlider.value / 100;
+  });
+
 
   audio.addEventListener('ended', function() {
       currentTrackIndex = (currentTrackIndex + 1) % tracks.length;
       playTrack();
   });
 
-  // Генерация плейлиста
+
   tracks.forEach((track, index) => {
       const trackItem = document.createElement('li');
       trackItem.textContent = track.name;
@@ -294,7 +342,6 @@ document.addEventListener("DOMContentLoaded", function() {
       playList.appendChild(trackItem);
   });
 });
-
 
 
 
