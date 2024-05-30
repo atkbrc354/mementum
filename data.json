@@ -1,66 +1,66 @@
 [
-    {
-      "text": "Genius is one percent inspiration and ninety-nine percent perspiration.",
-      "author": "Thomas Edison, type.fit"
-    },
-    {
-      "text": "You can observe a lot just by watching.",
-      "author": "Yogi Berra, type.fit"
-    },
-    {
-      "text": "A house divided against itself cannot stand.",
-      "author": "Abraham Lincoln, type.fit"
-    },
-    {
-      "text": "Difficulties increase the nearer we get to the goal.",
-      "author": "Johann Wolfgang von Goethe, type.fit"
-    },
-    {
-      "text": "Fate is in your hands and no one elses",
-      "author": "Byron Pulsifer, type.fit"
-    },
-    {
-      "text": "Be the chief but never the lord.",
-      "author": "Lao Tzu, type.fit"
-    },
-    {
-      "text": "Nothing happens unless first we dream.",
-      "author": "Carl Sandburg, type.fit"
-    },
-    {
-      "text": "Well begun is half done.",
-      "author": "Aristotle, type.fit"
-    },
-    {
-      "text": "Life is a learning experience, only if you learn.",
-      "author": "Yogi Berra"
-    },
-    {
-      "text": "Self-complacency is fatal to progress.",
-      "author": "Margaret Sangster, type.fit"
-    },
-    {
-      "text": "Peace comes from within. Do not seek it without.",
-      "author": "Buddha, type.fit"
-    },
-    {
-      "text": "What you give is what you get.",
-      "author": "Byron Pulsifer, type.fit"
-    },
-    {
-      "text": "We can only learn to love by loving.",
-      "author": "Iris Murdoch, type.fit"
-    },
-    {
-      "text": "Life is change. Growth is optional. Choose wisely.",
-      "author": "Karen Clark, type.fit"
-    },
-    {
-      "text": "You'll see it when you believe it.",
-      "author": "Wayne Dyer, type.fit"
-    },
-    {
-      "text": "Today is the tomorrow we worried about yesterday.",
+  {
+      "text": "Гений - это один процент вдохновения и девяносто девять процентов пота.",
+      "author": "Томас Эдисон, type.fit"
+  },
+  {
+      "text": "Можно многое заметить, просто наблюдая.",
+      "author": "Йоги Берра, type.fit"
+  },
+  {
+      "text": "Дом, разделенный сам с собой, не может устоять.",
+      "author": "Авраам Линкольн, type.fit"
+  },
+  {
+      "text": "Трудности возрастают, когда мы приближаемся к цели.",
+      "author": "Иоганн Вольфганг фон Гёте, type.fit"
+  },
+  {
+      "text": "Судьба в твоих руках и ни в чьих-то еще.",
+      "author": "Байрон Палсифер, type.fit"
+  },
+  {
+      "text": "Будь главным, но никогда не будь господином.",
+      "author": "Лао-цзы, type.fit"
+  },
+  {
+      "text": "Ничего не происходит, если сначала не приснится.",
+      "author": "Карл Сандберг, type.fit"
+  },
+  {
+      "text": "Хороший начало - половина дела.",
+      "author": "Аристотель, type.fit"
+  },
+  {
+      "text": "Жизнь - это опыт обучения, только если вы учитесь.",
+      "author": "Йоги Берра"
+  },
+  {
+      "text": "Самоудовлетворение фатально для прогресса.",
+      "author": "Маргарет Сэнгстер, type.fit"
+  },
+  {
+      "text": "Мир приходит изнутри. Не ищите его снаружи.",
+      "author": "Будда, type.fit"
+  },
+  {
+      "text": "То, что ты даешь, то и получаешь.",
+      "author": "Байрон Палсифер, type.fit"
+  },
+  {
+      "text": "Мы можем научиться любить только любя.",
+      "author": "Айрис Мёрдок, type.fit"
+  },
+  {
+      "text": "Жизнь - это изменение. Рост - это опционально. Выбирайте мудро.",
+      "author": "Карен Кларк, type.fit"
+  },
+  {
+      "text": "Ты увидишь это, когда поверишь в это.",
+      "author": "Уэйн Дайер, type.fit"
+  },
+  {
+      "text": "Сегодня - это завтра, о котором мы беспокоились вчера.",
       "author":  "type.fit"
-    }
-  ]
+  }
+]

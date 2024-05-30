@@ -264,6 +264,30 @@ body {
   min-height: 20px;
 }
 
+.player-controls {
+  padding-left: 20px;
+  width: 145px;
+}
+
+li {
+  list-style: none;
+  position: relative;
+  padding: 5px;
+  padding-left: 20px;
+  list-style: none;
+  opacity: .8;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.play-list li.current-track {
+  color: #C5B358;
+  font-weight: bold;
+  list-style: none;
+}
+
+
+
 @media (max-width: 768px) {
   .time {
     min-height: 80px;

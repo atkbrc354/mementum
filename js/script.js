@@ -159,6 +159,7 @@ slidePrev.addEventListener("click", getSlidePrev);
 
 setBg();
 
+// Погода
 const weatherIcon = document.querySelector(".weather-icon");
 const temperature = document.querySelector(".temperature");
 const weatherDescription = document.querySelector(".weather-description");
@@ -166,7 +167,11 @@ const wind = document.querySelector(".wind");
 const humidity = document.querySelector(".humidity");
 const city = document.querySelector(".city");
 
+
 city.addEventListener('change', getWeather);
+
+
+city.value = "Магнитогорск";
 
 
 async function getWeather() {
@@ -175,14 +180,18 @@ async function getWeather() {
   const res = await fetch(url);
   const data = await res.json();
 
+
   weatherIcon.classList.add(`owf-${data.weather[0].id}`);
   temperature.textContent = `${data.main.temp}°C`;
   weatherDescription.textContent = data.weather[0].description;
-  wind.textContent = `Скорость ветра : ${data.wind.speed} m/s`
-  humidity.textContent = `Влажность: ${data.main.humidity}%`
+  wind.textContent = `Скорость ветра: ${data.wind.speed} m/s`;
+  humidity.textContent = `Влажность: ${data.main.humidity}%`;
 }
 
 getWeather();
+
+
+// Генератор цытат
 
 const btnQuote = document.querySelector(".change-quote");
 const quote = document.querySelector(".quote");
@@ -211,6 +220,81 @@ getQuotes();
 btnQuote.addEventListener('click', updateQuote);
 
 window.addEventListener('load', updateQuote);
+
+//аудиоплеер
+
+document.addEventListener("DOMContentLoaded", function() {
+  const playerControls = document.querySelector('.player-controls');
+  const playPauseBtn = document.querySelector('.play');
+  const playPrevBtn = document.querySelector('.play-prev');
+  const playNextBtn = document.querySelector('.play-next');
+  const playList = document.querySelector('.play-list');
+  const tracks = [
+      { name: 'Aqua Caelestis', src: './assets/sounds/Aqua Caelestis.mp3' },
+      { name: 'River Flows In You', src: './assets/sounds/Ennio Morricone.mp3' },
+      { name: 'Summer Wind', src: './assets/sounds/River Flows In You.mp3' },
+      { name: 'Ennio Morricone', src: './assets/sounds/Summer Wind.mp3' },
+  ];
+  let currentTrackIndex = 0;
+  let audio = new Audio(tracks[currentTrackIndex].src);
+  
+  playPauseBtn.addEventListener('click', function() {
+      if (audio.paused) {
+          playTrack();
+      } else {
+          pauseTrack();
+      }
+  });
+
+  playPrevBtn.addEventListener('click', function() {
+      currentTrackIndex = (currentTrackIndex - 1 + tracks.length) % tracks.length;
+      playTrack();
+  });
+
+  playNextBtn.addEventListener('click', function() {
+      currentTrackIndex = (currentTrackIndex + 1) % tracks.length;
+      playTrack();
+  });
+
+  function playTrack() {
+      audio.src = tracks[currentTrackIndex].src;
+      audio.play();
+      playPauseBtn.classList.remove('play-icon');
+      playPauseBtn.classList.add('pause');
+      updatePlayList();
+  }
+
+  function pauseTrack() {
+      audio.pause();
+      playPauseBtn.classList.remove('pause');
+      playPauseBtn.classList.add('play-icon');
+  }
+
+  function updatePlayList() {
+      const trackItems = playList.querySelectorAll('li');
+      trackItems.forEach((item) => {
+          item.classList.remove('current-track');
+      });
+      trackItems[currentTrackIndex].classList.add('current-track');
+  }
+
+  audio.addEventListener('ended', function() {
+      currentTrackIndex = (currentTrackIndex + 1) % tracks.length;
+      playTrack();
+  });
+
+  // Генерация плейлиста
+  tracks.forEach((track, index) => {
+      const trackItem = document.createElement('li');
+      trackItem.textContent = track.name;
+      trackItem.addEventListener('click', function() {
+          currentTrackIndex = index;
+          playTrack();
+      });
+      playList.appendChild(trackItem);
+  });
+});
+
 
 
 
