@@ -189,6 +189,8 @@ body {
 }
 
 .slide-prev {
+  position: absolute;
+  z-index: 2;
   left: 20px;
   background-image: url("../assets/svg/slider-prev.svg");
 }
@@ -321,6 +323,7 @@ li {
   margin-top: 10px;
   margin-bottom: 10px;
   margin-left: 20px;
+  position: relative;
   z-index: 2;
   background-color: #ddd;
   border-radius: 2px;
@@ -375,7 +378,7 @@ li {
 }
 
 
-@media (max-width: 600px) {
+@media (max-width: 720px) {
   .main {
     padding-top: 270px;
   }
@@ -384,7 +387,7 @@ li {
     
   }
   .player {
-    margin-left: 0px;
+    margin-left: 20px;
   }
 
   .greeting {
