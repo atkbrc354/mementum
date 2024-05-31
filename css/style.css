@@ -378,7 +378,7 @@ li {
 }
 
 
-@media (max-width: 720px) {
+@media (max-width: 730px) {
   .main {
     padding-top: 270px;
   }
@@ -402,6 +402,9 @@ li {
 }
 
 @media (max-width: 390px) {
+  body {
+    height: 100vh;
+  }
   .greeting {
     font-size: 20px;
   }
