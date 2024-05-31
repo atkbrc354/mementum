@@ -65,7 +65,7 @@ function showGreeting() {
   const myTime = new Date(utc + (3600000 * 5));
       
   const hours = myTime.getHours();
-  if(hours <= 5){
+  if(hours >= 22 || hours <= 5){
     greeting.textContent = `Спокойной ночи`;
   } else if(hours > 5 && hours <= 12) {
     greeting.textContent = `Доброе утро`;
@@ -224,11 +224,11 @@ window.addEventListener('load', updateQuote);
 //аудиоплеер
 
 document.addEventListener("DOMContentLoaded", function() {
-  const playerControls = document.querySelector('.player-controls');
   const playPauseBtn = document.querySelector('.play');
   const playPrevBtn = document.querySelector('.play-prev');
   const playNextBtn = document.querySelector('.play-next');
   const playList = document.querySelector('.play-list');
+  const progressContainer = document.querySelector('.progress-container');
   const progressBar = document.querySelector('.progress-bar');
   const volumeBtn = document.querySelector('.volume');
   const volumeSlider = document.querySelector('.volume-slider');
@@ -249,7 +249,6 @@ document.addEventListener("DOMContentLoaded", function() {
   let currentTrackIndex = 0;
   let audio = new Audio(tracks[currentTrackIndex].src);
 
-
   playPauseBtn.addEventListener('click', function() {
       if (audio.paused) {
           playTrack();
@@ -263,12 +262,10 @@ document.addEventListener("DOMContentLoaded", function() {
       playTrack();
   });
 
-
   playNextBtn.addEventListener('click', function() {
       currentTrackIndex = (currentTrackIndex + 1) % tracks.length;
       playTrack();
   });
-
 
   function updatePlayList() {
       const trackItems = playList.querySelectorAll('li');
@@ -279,7 +276,6 @@ document.addEventListener("DOMContentLoaded", function() {
       trackName.textContent = tracks[currentTrackIndex].name;
   }
 
-
   function playTrack() {
       audio.src = tracks[currentTrackIndex].src;
       audio.play();
@@ -287,7 +283,6 @@ document.addEventListener("DOMContentLoaded", function() {
       playPauseBtn.classList.add('pause');
       updatePlayList();
   }
-
 
   function pauseTrack() {
       audio.pause();
@@ -310,30 +305,26 @@ document.addEventListener("DOMContentLoaded", function() {
 
   audio.addEventListener('timeupdate', updateProgress);
 
-  progressBar.addEventListener('click', function(event) {
+  progressContainer.addEventListener('click', function(event) {
       const clickX = event.offsetX;
-      const progressBarWidth = progressBar.clientWidth;
-      const progress = (clickX / progressBarWidth) * audio.duration;
-      audio.currentTime = progress;
+      const progressBarWidth = progressContainer.clientWidth;
+      const newTime = (clickX / progressBarWidth) * audio.duration;
+      audio.currentTime = newTime;
   });
-
 
   volumeBtn.addEventListener('click', function() {
       audio.muted = !audio.muted;
       volumeBtn.classList.toggle('mute', audio.muted);
   });
 
-
   volumeSlider.addEventListener('input', function() {
       audio.volume = volumeSlider.value / 100;
   });
-
 
   audio.addEventListener('ended', function() {
       currentTrackIndex = (currentTrackIndex + 1) % tracks.length;
       playTrack();
   });
-
 
   tracks.forEach((track, index) => {
       const trackItem = document.createElement('li');
@@ -345,6 +336,7 @@ document.addEventListener("DOMContentLoaded", function() {
       playList.appendChild(trackItem);
   });
 });
+
 
 
 
