@@ -9,8 +9,9 @@
   padding: 0;
 }
 
+
 body {
-  min-width: 480px;
+  min-width: 320px;
   min-height: 100vh;
   font-family: 'Arial', sans-serif;
   font-size: 16px;
@@ -402,6 +403,31 @@ li {
 }
 
 @media (max-width: 390px) {
+  header {
+    gap: 20px;
+  }
+  .player {
+    margin-left: 0;
+  }
+  li {
+    font-size: 13px;
+  }
+  .city {
+    width: 145px;
+    font-size: 18px;
+  }
+  .temperature {
+    font-size: 13px;
+  }
+  .weather-description {
+    font-size: 13px;
+  }
+  .wind {
+    font-size: 13px;
+  }
+  .humidity {
+    font-size: 13px;
+  }
   .greeting {
     font-size: 20px;
   }
